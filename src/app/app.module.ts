@@ -1,40 +1,37 @@
-﻿import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
-// used to create fake backend
-import { fakeBackendProvider } from './_helpers';
-
-import { appRoutingModule } from './app.routing';
-import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home';
-import { LoginComponent } from './login';
-import { RegisterComponent } from './register';
-import { AlertComponent } from './_components';
+import { EmployeeDetailsService } from './service/employee-details.service';
+import { MenuComponent } from './menu/menu.component';
+import { SharedModule } from './pipe/shared.module';
+import { Paginationservice} from  './service/pagination.service';
+import { EmployeeRecordsComponent } from './employee-records/employee-records.component';
+import { LoaderCircleComponent } from './shared/loader-circle/loader-circle.component';
+import { DropdownComponent } from './shared/dropdown/dropdown.component';
+
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        appRoutingModule
-    ],
-    declarations: [
-        AppComponent,
-        HomeComponent,
-        LoginComponent,
-        RegisterComponent,
-        AlertComponent
-    ],
-    providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-        // provider used to create fake backend
-        fakeBackendProvider
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    MenuComponent,
+    EmployeeRecordsComponent,
+    LoaderCircleComponent,
+    DropdownComponent
+  ],
+  imports: [
+    FormsModule,
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+     SharedModule
+  ],
+  providers: [
+    EmployeeDetailsService,
+    Paginationservice
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule { };
+export class AppModule { }

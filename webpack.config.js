@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-    entry: './src/main.ts',
+    entry: ['./src/main.ts', './scss/main.scss'],
     resolve: {
         extensions: ['.ts', '.js'],
         alias: {
@@ -21,10 +21,24 @@ module.exports = {
                 use: 'html-loader'
             },
             {
-                test: /\.less$/,
+                test: /\.less/,
                 use: ['style-loader', 'css-loader', 'less-loader']
             },
-
+            {
+                test: /\.css/,
+                use: ['css-loader']
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                  // Creates `style` nodes from JS strings
+                  'style-loader',
+                  // Translates CSS into CommonJS
+                  'css-loader',
+                  // Compiles Sass to CSS
+                  'sass-loader',
+                ],
+              },
             // workaround for warning: System.import() is deprecated and will be removed soon. Use import() instead.
             {
                 test: /[\/\\]@angular[\/\\].+\.js$/,
