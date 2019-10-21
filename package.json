@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/cornflourblue/angular8-withwebpack.git"
+        "url": "https://github.com/bhawananegi0224/webapack-angualr8.git"
     },
     "scripts": {
         "build": "webpack --mode production",
