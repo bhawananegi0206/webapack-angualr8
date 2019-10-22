@@ -2,24 +2,24 @@
 
   <div class="employee-header row col-sm-12">
     <div class="col-sm-4">
-      <input class="form-control" type="text" [(ngModel)]="searchvalue" placeholder="Search...">
+      <input class="form-control" type="text" [(ngModel)]="searchvalue" placeholder="{{'search.text' | translate}}">
     </div>
     <div class="col-sm-4">
       <app-dropdown [dropdownId]="dropdownPaginationId" [options]="pagesList" [selectedOption]="selectedPageSize"
         (newOption)="ngOnInit($event)"></app-dropdown>
     </div>
     <div class="col-sm-2">
-      <div class="editmode btn btn-secondary" i18n (click)="toggleDisplay()">{{togglebuttonvalue}}</div>
+      <div class="editmode btn btn-secondary"  (click)="toggleDisplay()" translate>{{togglebuttonvalue}}</div>
     </div>
   </div>
 
   <table class="table" >
     <thead>
       <tr>
-        <th (click)="changeorder('name','string' )">Name</th>
-        <th (click)="changeorder('salary','number')">Salary</th>
-        <th (click)="changeorder('age','number')">Age</th>
-        <th (click)="changeorder('designation','string')">Designation</th>
+        <th translate (click)="changeorder('name','string' )">tablecontent.column-name</th>
+        <th translate (click)="changeorder('salary','number')">tablecontent.column-salary</th>
+        <th translate (click)="changeorder('age','number')">tablecontent.column-age</th>
+        <th translate (click)="changeorder('designation','string')">tablecontent.column-designation</th>
       </tr>
     </thead>
    

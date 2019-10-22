@@ -1,0 +1,22 @@
+{
+    "employee": {
+        "heading": "Employee records",
+        "navigate-button":"Check employee details"
+    },
+    "tablecontent":{
+        "column-name":"Name",
+        "column-designation":"Designation",
+        "column-salary":"Salary",
+        "column-age":"Age"
+    },
+    "dropdown":{
+        "text":"Records per page"
+    },
+    "search":{
+        "text" :"Search"
+    },
+    "toggle":{
+        "editmode":"Edit records",
+        "viewmode":"View records"
+    }
+}

@@ -1,7 +1,22 @@
 ﻿const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const I18nPlugin = require('i18n-webpack-plugin');
 
+const inline_locale = {
+    en: {
+        animals: {
+            hedgehog: 'hedgehog is a bunny',
+            walrus: 'walrus'
+        }
+    },
+    de: {
+        animals: {
+            hedgehog: 'jeż',
+            walrus: 'mors'
+        }
+    }
+}
 module.exports = {
     entry: ['./src/main.ts', './scss/main.scss'],
     resolve: {
@@ -59,7 +74,10 @@ module.exports = {
         new webpack.ContextReplacementPlugin(
             /\@angular(\\|\/)core(\\|\/)fesm5/,
             path.resolve(__dirname, 'src')
-        )
+        ),
+        new I18nPlugin(inline_locale, {
+            nested: true //allows for nesting locale keys like
+          })
     ],
     optimization: {
         splitChunks: {

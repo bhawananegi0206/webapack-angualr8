@@ -11,6 +11,10 @@ import { Paginationservice} from  './service/pagination.service';
 import { EmployeeRecordsComponent } from './employee-records/employee-records.component';
 import { LoaderCircleComponent } from './shared/loader-circle/loader-circle.component';
 import { DropdownComponent } from './shared/dropdown/dropdown.component';
+import { registerLocaleData } from '@angular/common';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient} from '@angular/common/http';
 
 
 @NgModule({
@@ -26,7 +30,14 @@ import { DropdownComponent } from './shared/dropdown/dropdown.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-     SharedModule
+    SharedModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  })
   ],
   providers: [
     EmployeeDetailsService,
@@ -35,3 +46,6 @@ import { DropdownComponent } from './shared/dropdown/dropdown.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

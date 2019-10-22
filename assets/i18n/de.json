@@ -1,0 +1,22 @@
+{
+    "employee": {
+        "heading": "Mitarbeiterakten",
+        "navigate-button":"Überprüfen Sie die Mitarbeiterdaten"
+    },
+    "tablecontent":{
+        "column-name":"Name",
+        "column-designation":"Bezeichnung",
+        "column-salary":"Gehalt",
+        "column-age":"Alter"
+    },
+    "dropdown":{
+        "text":"Einträge pro Seite"
+    },
+    "search":{
+        "text" :"Suche"
+    },
+    "toggle":{
+        "editmode":"Datensätze bearbeiten",
+        "viewmode":"Datensätze anzeigen"
+    }
+}

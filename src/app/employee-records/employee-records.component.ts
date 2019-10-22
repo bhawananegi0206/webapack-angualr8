@@ -4,6 +4,8 @@ import { EmployeeDetailsService } from '../service/employee-details.service';
 import { Paginationservice } from '../service/pagination.service';
 import { CONSTANTS } from '../common/constants';
 import './employee-records.component.scss';
+import {TranslateService} from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-employee-records',
@@ -24,24 +26,29 @@ export class EmployeeRecordsComponent implements OnInit {
   selectedPageSize: any;
   sortcounter = 0;
   iseditmode: boolean = false;
-  togglebuttonvalue: string = CONSTANTS.EMPLOYEE.EDITMODE;
+  togglebuttonvalue:any;
   loader = true;
   allItems: any;
   // pager object
   pager: any = {};
   // paged items
   pagedItems: any[];
+  localeid;
 
-  constructor(private route: ActivatedRoute,
+  constructor(private translate: TranslateService,private route: ActivatedRoute,
     private router: Router, private employeeDetailService: EmployeeDetailsService, private pagerService: Paginationservice) {
     this.sortby = { "sortbyfieldname": "", "sortbymethodvalue": "", "type": "" };
     this.filterby = { "fieldname": "", "filtervalue": "", "filterbymethod": "" };
+    this.togglebuttonvalue = this.translate.instant("toggle.editmode");
+
   }
 
 
   ngOnInit(selectPageSize?) {
     this.dropdownPaginationId = "employeedropdown";
     this.pagesize = selectPageSize ? selectPageSize : this.selectedPageSize;
+    this.localeid = this.route.snapshot.queryParamMap.get('locale') !== null ? this.route.snapshot.queryParamMap.get('locale') : "en";
+    this.translate.setDefaultLang(this.localeid);
     this.employeeDetailService.executeEmployeeDetailService().subscribe(
       response => {
         this.getvaluesfromparams(selectPageSize);
@@ -146,10 +153,10 @@ export class EmployeeRecordsComponent implements OnInit {
   toggleDisplay() {
     this.iseditmode = !this.iseditmode;
     if (this.iseditmode) {
-      this.togglebuttonvalue = CONSTANTS.EMPLOYEE.VIEWMODE;
+      this.togglebuttonvalue = this.translate.instant("toggle.viewmode");
     }
     else {
-      this.togglebuttonvalue = CONSTANTS.EMPLOYEE.EDITMODE;
+      this.togglebuttonvalue =  this.translate.instant("toggle.editmode");
     }
 
 

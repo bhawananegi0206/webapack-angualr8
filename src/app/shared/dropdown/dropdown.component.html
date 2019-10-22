@@ -1,5 +1,5 @@
 <div class="select-dropdown">
-    <label for="dropdown" class="accessibility">Records per page</label>
+    <label for="dropdown" class="accessibility" translate>dropdown.text</label>
     <select [id]="dropdownId" class="dropdown-section" name="dropdown" [(ngModel)]="selectedOption" (ngModelChange)="changeOption()" size="1">
                     <option *ngFor="let option of options"  [attr.value]="option">{{option}}</option>
 			  </select>
