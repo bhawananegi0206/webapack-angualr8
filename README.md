@@ -21,3 +21,10 @@ http://localhost:8080/employeerecords?search=leslie
 http://localhost:8080/employeerecords?search=50
 http://localhost:8080/employeerecords?cursor=11
 http://localhost:8080/employeerecords?filter=%5B%7B%22field%22:%22salary%22,%22method%22:%22equality%22,%22parameters%22%20:40000%7D%5D&search=%22jack%22
+
+
+To check Locale specific changes
+http://localhost:8080/employeerecords?locale=de
+http://localhost:8080/employeerecords?locale=en
+
+By default it will take en
